@@ -5,7 +5,7 @@
  * write non-OO code using an OO language.
  * ====================================================================
  */
-
+import java.io.*;
 import java.util.Scanner;
 /**
  * This class is used to store and retrieve the distance between various locations 
@@ -88,6 +88,8 @@ public class CityConnect {
 	 * the I/O redirection technique. If not, only the first line of the input
 	 * text file will be processed.
 	 */
+
+
 	private static Scanner scanner = new Scanner(System.in);
 
 	/*
@@ -311,13 +313,17 @@ public class CityConnect {
 				&& (startLocation2 == null) || (endLocation2 == null)){
 			throw new Error("Route end points cannot be null");
 		}
-
-		return (startLocation1.equalsIgnoreCase(startLocation2) && endLocation1
-				.equalsIgnoreCase(endLocation2))
-				|| (startLocation1.equalsIgnoreCase(endLocation2) && endLocation1
-						.equalsIgnoreCase(startLocation2));
+		
+		return checkIfSameRoute(startLocation1,endLocation1,startLocation2,endLocation2)
+				|| checkIfSameRoute(startLocation1,endLocation2,startLocation2,endLocation1);
 	}
-
+	
+	private static boolean checkIfSameRoute(String startLocation1,
+			String endLocation1, String startLocation2, String endLocation2) {
+		return startLocation1.equalsIgnoreCase(startLocation2) && endLocation1
+				.equalsIgnoreCase(endLocation2);
+	}
+	
 	private static boolean isPositiveNonZeroInt(String s) {
 		try {
 			int i = Integer.parseInt(s);
