@@ -102,12 +102,16 @@ public class CityConnect {
 	public static void main(String[] args) {
 		showToUser(WELCOME_MESSAGE);
 		while (true) {
-			System.out.print("Enter command:");
-			String command = scanner.nextLine();
-			String userCommand = command;
+			displayIntro();
+			String userCommand = scanner.nextLine();
+			
 			String feedback = executeCommand(userCommand);
 			showToUser(feedback);
 		}
+	}
+
+	private static void displayIntro() {
+		System.out.print("Enter command:");
 	}
 
 	/*
@@ -117,6 +121,9 @@ public class CityConnect {
 	 * that is referenced by the method above.
 	 * ====================================================================
 	 */
+	private static void displayToUser(String text) {
+		System.out.print(text);
+	}
 
 	private static void showToUser(String text) {
 		System.out.println(text);
