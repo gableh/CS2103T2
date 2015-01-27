@@ -229,12 +229,12 @@ public class CityConnect {
 			String newEndLocation) {
 		for (int i = 0; i < route.length; i++) {
 
-			String existing_start_location = route[i][STORAGE_POSITION_START_LOCATION];
-			String existing_end_location = route[i][STORAGE_POSITION_END_LOCATION];
+			String existingStartLocation = route[i][STORAGE_POSITION_START_LOCATION];
+			String existingEndLocation = route[i][STORAGE_POSITION_END_LOCATION];
 
-			if (existing_start_location == null) { //beginning of empty slots
+			if (existingStartLocation == null) { //beginning of empty slots
 				return NOT_FOUND; 
-			} else if (sameRoute(existing_start_location, existing_end_location,
+			} else if (isSameRoute(existingStartLocation, existingEndLocation,
 					newStartLocation, newEndLocation)) { 
 				return i;
 			}
@@ -302,7 +302,7 @@ public class CityConnect {
 
 			if (existingStartLocation == null) { // empty slot
 				return i;
-			} else if (sameRoute(existingStartLocation, existingEndLocation,
+			} else if (isSameRoute(existingStartLocation, existingEndLocation,
 					newStartLocation, newEndLocation)) {
 				return i;
 			}
@@ -314,7 +314,7 @@ public class CityConnect {
 	/**
 	 * This operation checks if two routes represents the same route.
 	 */
-	private static boolean sameRoute(String startLocation1,
+	private static boolean isSameRoute(String startLocation1,
 			String endLocation1, String startLocation2, String endLocation2) {
 
 		if ((startLocation1 == null) || (endLocation1 == null)
@@ -322,11 +322,11 @@ public class CityConnect {
 			throw new Error("Route end points cannot be null");
 		}
 		
-		return checkIfSameRoute(startLocation1,endLocation1,startLocation2,endLocation2)
-				|| checkIfSameRoute(startLocation1,endLocation2,startLocation2,endLocation1);
+		return isSameRouteCheck(startLocation1,endLocation1,startLocation2,endLocation2)
+				|| isSameRouteCheck(startLocation1,endLocation2,startLocation2,endLocation1);
 	}
 	
-	private static boolean checkIfSameRoute(String startLocation1,
+	private static boolean isSameRouteCheck(String startLocation1,
 			String endLocation1, String startLocation2, String endLocation2) {
 		return startLocation1.equalsIgnoreCase(startLocation2) && endLocation1
 				.equalsIgnoreCase(endLocation2);
