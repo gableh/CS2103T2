@@ -121,9 +121,7 @@ public class CityConnect {
 	 * that is referenced by the method above.
 	 * ====================================================================
 	 */
-	private static void displayToUser(String text) {
-		System.out.print(text);
-	}
+
 
 	private static void showToUser(String text) {
 		System.out.println(text);
@@ -178,15 +176,18 @@ public class CityConnect {
 		if (commandTypeString == null)
 			throw new Error("command type string cannot be null!");
 
-		if (commandTypeString.equalsIgnoreCase("addroute")) {
+		if (isEqualTo(commandTypeString,"addroute")) {
 			return COMMAND_TYPE.ADD_ROUTE;
-		} else if (commandTypeString.equalsIgnoreCase("getdistance")) {
+		} else if (isEqualTo(commandTypeString,"getdistance")) {
 			return COMMAND_TYPE.GET_DISTANCE;
-		} else if (commandTypeString.equalsIgnoreCase("exit")) {
+		} else if (isEqualTo(commandTypeString,"exit")) {
 		 	return COMMAND_TYPE.EXIT;
 		} else {
 			return COMMAND_TYPE.INVALID;
 		}
+	}
+	private static boolean isEqualTo(String string1,String string2){
+		return string1.equalsIgnoreCase(string2);
 	}
 
 	/**
@@ -309,6 +310,7 @@ public class CityConnect {
 		}
 		return SLOT_UNAVAILABLE;
 	}
+	
 
 	/**
 	 * This operation checks if two routes represents the same route.
