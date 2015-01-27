@@ -5,7 +5,7 @@
  * write non-OO code using an OO language.
  * ====================================================================
  */
-import java.io.*;
+
 import java.util.Scanner;
 /**
  * This class is used to store and retrieve the distance between various locations 
@@ -135,17 +135,17 @@ public class CityConnect {
 		CommandType CommandType = determineCommandType(CommandTypeString);
 
 		switch (CommandType) {
-		case ADD_ROUTE:
-			return addRoute(userCommand);
-		case GET_DISTANCE:
-			return getDistance(userCommand);
-		case INVALID:
-			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
-		case EXIT:
-			System.exit(0);
-		default:
-			//throw an error if the command is not recognized
-			throw new Error("Unrecognized command type");
+			case ADD_ROUTE:
+				return addRoute(userCommand);
+			case GET_DISTANCE:
+				return getDistance(userCommand);
+			case INVALID:
+				return String.format(MESSAGE_INVALID_FORMAT, userCommand);
+			case EXIT:
+				System.exit(0);
+			default:
+				//throw an error if the command is not recognized
+				throw new Error("Unrecognized command type");
 		}
 		/*
 		 * ==============NOTE TO STUDENTS======================================
