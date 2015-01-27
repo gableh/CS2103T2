@@ -55,7 +55,6 @@ public class CityConnect {
 	enum CommandType {
 		ADD_ROUTE, GET_DISTANCE, INVALID, EXIT
 	};
-
 	// This is used to indicate there is no suitable slot to store route
 	private static final int SLOT_UNAVAILABLE = -1;
 	
@@ -131,11 +130,11 @@ public class CityConnect {
 		if (userCommand.trim().equals(""))
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 
-		String commandTypeString = getFirstWord(userCommand);
+		String CommandTypeString = getFirstWord(userCommand);
 
-		CommandType commandType = determineCommandType(commandTypeString);
+		CommandType CommandType = determineCommandType(CommandTypeString);
 
-		switch (commandType) {
+		switch (CommandType) {
 		case ADD_ROUTE:
 			return addRoute(userCommand);
 		case GET_DISTANCE:
@@ -169,18 +168,18 @@ public class CityConnect {
 	 * This operation determines which of the supported command types the user
 	 * wants to perform
 	 * 
-	 * @param commandTypeString
+	 * @param CommandTypeString
 	 *            is the first word of the user command
 	 */
-	private static CommandType determineCommandType(String commandTypeString) {
-		if (commandTypeString == null)
+	private static CommandType determineCommandType(String CommandTypeString) {
+		if (CommandTypeString == null)
 			throw new Error("command type string cannot be null!");
 
-		if (isEqualTo(commandTypeString,"addroute")) {
+		if (isEqualTo(CommandTypeString,"addroute")) {
 			return CommandType.ADD_ROUTE;
-		} else if (isEqualTo(commandTypeString,"getdistance")) {
+		} else if (isEqualTo(CommandTypeString,"getdistance")) {
 			return CommandType.GET_DISTANCE;
-		} else if (isEqualTo(commandTypeString,"exit")) {
+		} else if (isEqualTo(CommandTypeString,"exit")) {
 		 	return CommandType.EXIT;
 		} else {
 			return CommandType.INVALID;
@@ -348,8 +347,8 @@ public class CityConnect {
 	}
 
 	private static String getFirstWord(String userCommand) {
-		String commandTypeString = userCommand.trim().split("\\s+")[0];
-		return commandTypeString;
+		String CommandTypeString = userCommand.trim().split("\\s+")[0];
+		return CommandTypeString;
 	}
 
 	private static String[] splitParameters(String commandParametersString) {
